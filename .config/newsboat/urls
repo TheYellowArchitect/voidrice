@@ -1,10 +1,60 @@
-https://lukesmith.xyz/rss.xml
-https://videos.lukesmith.xyz/feeds/videos.xml?videoChannelId=2 "~Luke Smith (Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith (YouTube)"
-https://lindypress.net/rss
-https://notrelated.xyz/rss
-https://landchad.net/rss.xml
-https://based.cooking/index.xml
+---Godot(Github)---
+https://godotengine.org/rss.xml "godot"
+https://github.com/reduz.atom "godot" "~Reduz (Core)"
+https://github.com/Faless.atom "godot" "~Faless (Netcoding)"
+https://github.com/dsnopek.atom "godot" "~Snopek (Netcoding)"
+https://github.com/TokageItLab.atom "godot" "~Tokage (Modelling)"
+
+---Godot(Videos)---
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBt_sQrF2IJm40yrXtOSNsw "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2uv8Mbqsxyr0xw9axSms5g "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQ8hqAX8i9mdcwrnu8e2sIg "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCxboW7x0jZqFdvMdCFKTMsQ "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCCF1XBU7lknM180qDhM_DvA "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXGCRf_do2vpMzHYAmURiuA "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCPX22eBpVB8bDVOb6BbhrlQ "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCW3-IqoZx35gSWpxVqarvWA "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTyq5-4JUA_-694Y2pNdYng "videos" "godot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCwF6yYbIFJmB5ynAkzq9Psg "videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTnzN9yA7v16RLVrAB-szLg "videos"
+
+
+---Youtube---
+https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg "videos" "videogames"
+https://www.youtube.com/feeds/videos.xml?channel_id=UClOGLGPOqlAiLmOvXW5lKbw "videos" "videogames"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYZtp0YIxYOipX15v_h_jnA "videos" "videogames"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCR1D15p_vdP3HkrH8wgjQRw "videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC_vUfm0QoNfsfnuFc0xIrRg "videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC4TjXPVIYz9Z13SB3vxKuZQ "videos"
+
+---Music---
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5k9V5mqMrMy-KXY6c8iKQA "music"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJ_jwWjf8u5mdtac71Be8QA "music"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJX_kioePIsbGiBqvwFgnUA "music"
+
+---LukeSmith---
+https://lukesmith.xyz/rss.xml "lukesmith"
+https://videos.lukesmith.xyz/feeds/videos.xml?videoChannelId=2 "~Luke Smith (Videos)" "lukesmith" "videos"
+https://lindypress.net/rss "lukesmith"
+https://notrelated.xyz/rss "lukesmith"
+https://landchad.net/rss.xml "lukesmith"
+
+---Blogposts---
+https://bargainbinphilosophy.xyz/rss.xml "blogpost"
+https://jacobwsmith.xyz/feed.xml "~Jacob Smith" "blogpost"
+https://houseofedwards.xyz/index.xml "~House of Edwards" "blogpost"
+https://jakesthoughts.xyz/rss.xml "~Jake" "blogpost"
+https://digdeeper.club/atom.xml "blogpost"
+https://aperopia.fr/feed "blogpost"
+https://grantwinney.com/rss "~Grant Winney" "blogpost"
+https://computer.rip/ "~ComputersBad" "blogpost"
+https://theyellowarchitect.com/rss.xml "blogpost"
+
+---Videogames---
+https://fractalsoftworks.com/feed/ "videogames"
+https://spacestation14.io/index.xml "videogames" "~Space Station 14"
+https://www.bay12games.com/dwarves/dev_now.rss "videogames"
+
+---Linux---
 https://artixlinux.org/feed.php "tech"
 https://www.archlinux.org/feeds/news/ "tech"
-https://github.com/LukeSmithxyz/voidrice/commits/master.atom "~LARBS dotfiles"

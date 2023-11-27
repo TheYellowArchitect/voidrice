@@ -1,4 +1,8 @@
 # You can add comments to these files with #
+kek ${MM_KEK:-$HOME/mm/kek}
+kel ${MM_KEL:-$HOME/mm/kel}
+b ${MM_METASTASIS:-$HOME/mm/Metastasis/Standalone}
+y ${MM_YUGIOH:-$HOME/mm/gds/Yugioh}
 cac ${XDG_CACHE_HOME:-$HOME/.cache}
 cf  ${XDG_CONFIG_HOME:-$HOME/.config}
 D   ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
@@ -6,9 +10,20 @@ d   ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
 dt  ${XDG_DATA_HOME:-$HOME/.local/share}
 rr  $HOME/.local/src
 h   $HOME
-m   ${XDG_MUSIC_DIR:-$HOME/Music}
-mn  /mnt
-pp  ${XDG_PICTURES_DIR:-$HOME/Pictures}
-sc  $HOME/.local/bin
-src $HOME/.local/src
+m   $MUSIC
+lb  $HOME/.local/bin
+lsr $HOME/.local/src
+lsh $HOME/.local/share
 vv  ${XDG_VIDEOS_DIR:-$HOME/Videos}
+help ${MM_LINUX_NOTES:-$HOME/mm/Linux-Guides}
+ilb ${MM_YLBAL:-$HOME/mm/ArchArchitectureProjects/Ilbal/Videogame}
+th $HOME/THICC
+tv $HOME/THICC/Videos
+tu $HOME/THICC/UNSEEN_FOR_YEARS
+tx $HOME/mm/TextFiles
+a $HOME/mm/ArchArchitectureProjects
+lg $HOME/mm/Linux-Guides
+gp $HOME/mm/Godot/Projects
+ge $HOME/mm/Godot/Engines
+gy $HOME/mm/Godot/Projects/Yugioh/1ShadowDuels
+gd ${MM_GAME_DESIGNS:-$HOME/mm/gds}

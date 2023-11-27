@@ -31,6 +31,8 @@ set noshowmode
 set noruler
 set laststatus=0
 set noshowcmd
+set wrap
+set breakindent
 
 " Some basics:
 	nnoremap c "_c
@@ -47,6 +49,9 @@ set noshowcmd
 	vnoremap . :normal .<CR>
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+" Tab-Edit so I can swiftly open a tab by opening one
+" command! -nargs=1 -complete=file E tabnew <args>
+	cmap <leader>te tabedit
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
@@ -67,14 +72,6 @@ set noshowcmd
 	nm <leader>i :call ToggleIPA()<CR>
 	imap <leader>i <esc>:call ToggleIPA()<CR>a
 	nm <leader>q :call ToggleProse()<CR>
-	
-" vim-airline
-	if !exists('g:airline_symbols')
-  	    let g:airline_symbols = {}
-	endif
-	let g:airline_symbols.colnr = ' C:'
-	let g:airline_symbols.linenr = ' L:'
-	let g:airline_symbols.maxlinenr = '☰ '
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h

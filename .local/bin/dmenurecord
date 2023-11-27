@@ -31,10 +31,8 @@ screencast() { \
 	-s "$(getdim)" \
 	-i "$DISPLAY" \
 	-r 24 \
-	-use_wallclock_as_timestamps 1 \
 	-f alsa -thread_queue_size 1024 -i default \
- 	-c:v h264 \
-	-crf 0 -preset ultrafast -c:a aac \
+	-filter:v "format=yuv420p" \
 	"$HOME/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
 	updateicon "⏺️🎙️"
@@ -45,8 +43,8 @@ video() { ffmpeg \
 	-framerate 30 \
 	-s "$(getdim)" \
 	-i "$DISPLAY" \
- 	-c:v libx264 -qp 0 -r 30 \
-	"$HOME/video-$(date '+%y%m%d-%H%M-%S').mkv" &
+	-filter:v "format=yuv420p" \
+	"$HOME/video-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
 	updateicon "⏺️"
 	}
@@ -74,7 +72,7 @@ audio() { \
 	ffmpeg \
 	-f alsa -i default \
 	-c:a flac \
-	"$HOME/audio-$(date '+%y%m%d-%H%M-%S').flac" &
+	"/home/solomos/audio-$(date '+%y%m%d-%H%M-%S').flac" &
 	echo $! > /tmp/recordingpid
 	updateicon "🎙️"
 	}

@@ -1,0 +1,3 @@
+Godot=GSnopekGames|Gwizz|GLukky|GDQuest|GBonkahe|Gcrigz|Gblargis|GameFabric|G16bitdev
+Tech=Luke Smith|Brodie Robertson|Mental Outlaw
+Music=Bardcore|Kerry Joiner|Ludwig

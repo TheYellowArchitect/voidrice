@@ -1,0 +1,6 @@
+#!/bin/dash
+finalURL=$(xclip -o selection primary | sed -E 's/\?si\=[a-zA-Z0-9]{16}//' )
+notify-send "$finalURL"
+videoID=$(echo "$finalURL" | awk -F'[=&]' '{print $2}')
+[ -z "$videoID" ] && videoID=$(echo "$finalURL" | sed -E 's/.+\///');
+echo "$finalURL" | grep -q yout  && notify-send "⏳" && yt-dlp $finalURL && ls | grep "$videoID" | xargs -0 notify-send "✅"

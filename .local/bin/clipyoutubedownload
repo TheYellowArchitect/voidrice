@@ -1,0 +1,15 @@
+#!/bin/dash
+
+clipboardTextClipboard=$(xclip -o -selection clipboard);
+clipboardTextSelected=$(xclip -o -selection primary);
+
+clipboard1=$(echo "$clipboardTextClipboard" | sed -E 's/\?si\=[a-zA-Z0-9]{16}//' | grep -P '((?:https?:)?(?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]{7,15})(?:[\?&][a-zA-Z0-9\_-]+=[a-zA-Z0-9\_-]+))') ;
+clipboard2=$(echo "$clipboardTextSelected" | grep -P '((?:https?:)?(?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]{7,15})(?:[\?&][a-zA-Z0-9\_-]+=[a-zA-Z0-9\_-]+))') ;
+echo "$clipboard1";
+echo "$clipboard2";
+#yt-dlp $clipboard1
+
+#if  $clipboardTextClipboard ~= (?:https?:)?(?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]{7,15})(?:[\?&][a-zA-Z0-9\_-]+=[a-zA-Z0-9\_-]+)  ; then
+#	echo "$clipboardTextClipboard" ;
+#	echo "$clipboardTextSelected" ;
+#fi

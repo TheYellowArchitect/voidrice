@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#why does lukesmith use --delete-after for rsync websync?
+
+rsync -vrP ~/mm/ArchArchitectureProjects/1website/final/ root@theyellowarchitect.com:/var/www/theyellowarchitect/

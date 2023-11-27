@@ -50,7 +50,7 @@ cmd open ${{
     esac
 }}
 
-cmd mkdir $mkdir -p "$@"
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
 cmd extract ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
@@ -85,6 +85,111 @@ cmd delete ${{
 	[ $ans = "y" ] && rm -rf -- $fx
 }}
 
+cmd encodetomp3 ${{
+   clear;
+   set -f;
+
+   music_folder="${MUSIC}";
+
+   #Variables for notify-send
+   converted_filenames="";
+   converted_files_count=0;
+   videos_without_audio_streams="";
+   videos_without_audio_streams_count=0;
+
+   for pickedFilepath in $fx; do
+      case $pickedFilepath in
+	*.mp4 | *.webm | *.mkv)
+	  ;;
+	*)
+	   echo 'Skipping ${pickedFilepath}' && continue 1;;
+      esac
+
+      parsed_MP3=$(echo "$pickedFilepath" | sed 's/\(.mp4\|.webm\|.mkv\)/.mp3/' | sed 's|.*\/||');
+      parsed_MP3="${music_folder}/${parsed_MP3}";
+
+      #Using ffprobe because videos without audiostream result in exit code 1 which stops this entire loop of many files
+      #Remove (alongside its 2 variables) if you don't record videos without audio (which are admittedly rare)
+      if [[ $(ffprobe -loglevel error -show_entries stream=codec_type -of csv=p=0 "$pickedFilepath") != *"audio"* ]]; then
+	  ((videos_without_audio_streams_count=videos_without_audio_streams_count+1));
+	  videos_without_audio_streams="$videos_without_audio_streams"$'\n'"$pickedFilepath";
+	  continue 1;
+      fi
+
+      ffmpeg -i "$pickedFilepath" "$parsed_MP3";
+
+      ((converted_files_count=converted_files_count+1));
+      converted_filenames="$converted_filenames"$'\n'"$pickedFilepath";
+
+      if [[ $# -eq 1 ]]; then
+	rm -f -- $pickedFilepath;
+      fi
+   done
+
+   #Notify the user of the results
+   if [[ $converted_files_count -gt 0 ]]; then
+      converted_filenames=$(echo "$converted_filenames" | sed 's|.*\/||');
+      notify-send "Converted MP3 Files($converted_files_count):" "$converted_filenames";
+   fi;
+
+   if [[ $videos_without_audio_streams_count -gt 0 ]]; then
+      videos_without_audio_streams=$(echo "$videos_without_audio_streams" | sed 's|.*\/||');
+      notify-send "Videos without audio stream($videos_without_audio_streams_count):" "$videos_without_audio_streams";
+   fi;
+
+   #Uncomment the below line if you want to automatically unselect the original converted video files
+   #lf -remote "send $id unselect";
+}}
+
+cmd compressvideo ${{
+   clear;
+   set -f;
+
+   converted_filenames=""; #notify-send variable
+   converted_files_count=0; #notify-send variable
+
+   echo "Compression Ratio? (default: 31, maximum: 50)";
+   read -N 2 cr ;
+
+   #If not a number (e.g. empty), give default 31 value
+   if ! [[ $cr =~ ^[0-5][0-9]$ ]]; then
+      echo "IS NOT A NUMBER" && sleep 1 ;
+      cr="31" ;
+   fi
+
+   echo "$cr" ;
+
+   for pickedFilepath in $fx; do
+      #could instead use ffprobe but would get more complicated as the filetype suffix becomes unknown
+      case $pickedFilepath in
+         *.mp4)
+		tempFilepath=$(echo "$pickedFilepath" | sed 's|.mp4|(CONVERTING).mp4|');
+		mv -f "$pickedFilepath" "$tempFilepath";
+
+		ffmpeg -i "$tempFilepath" -vcodec libx265 -crf "$cr" "$pickedFilepath";
+		rm -f -- "$tempFilepath";
+		;;
+         *.webm | *.mkv)
+		newFilepath=$(echo "$pickedFilepath" | sed 's/\(.webm\|.mkv\)/.mp4/');
+		ffmpeg -i "$pickedFilepath" -vcodec libx265 -crf "$cr" "$newFilepath";
+		rm -f -- "$pickedFilepath";
+		;;
+	 *)
+	   continue 1;;
+      esac
+
+      ((converted_files_count=converted_files_count+1));
+      converted_filenames="$converted_filenames"$'\n'"$pickedFilepath";
+
+   done
+
+   #Notify the user of the results
+   if [[ $converted_files_count -gt 0 ]]; then
+      converted_filenames=$(echo "$converted_filenames" | sed 's|.*\/||');
+      notify-send "Compressed Videos($converted_files_count):" "$converted_filenames";
+   fi;
+}}
+
 cmd moveto ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
@@ -94,6 +199,37 @@ cmd moveto ${{
 		eval mv -iv \"$x\" \"$dest\"
 	done &&
 	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
+}}
+
+#Ugly copypasta below. One string parameter would be enough.
+cmd movetokek ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear;
+	dest="${MM_KEK:-$HOME/mm/kek}" &&
+	for x in $fx; do
+		eval mv -iv \"$x\" \"$dest\"
+	done
+}}
+
+cmd movetokel ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear;
+	dest="${MM_KEL:-$HOME/mm/kel}" &&
+	for x in $fx; do
+		eval mv -iv \"$x\" \"$dest\"
+	done
+}}
+
+cmd movetomusic ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear;
+	dest="${XDG_MUSIC_DIR:-$HOME/Music}" &&
+	for x in $fx; do
+		eval mv -iv \"$x\" \"$dest\"
+	done
 }}
 
 cmd copyto ${{
@@ -106,8 +242,6 @@ cmd copyto ${{
 	done &&
 	notify-send "📋 File(s) copied." "File(s) copies to $dest."
 }}
-
-cmd setbg "$1"
 
 cmd bulkrename ${{
     tmpfile_old="$(mktemp)"
@@ -130,6 +264,7 @@ cmd bulkrename ${{
     lf -remote "send $id unselect"
 }}
 
+
 # Bindings
 map <c-f> $lf -remote "send $id select \"$(fzf)\""
 map J $lf -remote "send $id cd $(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf)"
@@ -139,7 +274,7 @@ map D delete
 map E extract
 map C copyto
 map M moveto
-map <c-n> push :mkdir<space>""<left>
+map <c-n> push :mkdir<space>
 map <c-r> reload
 map <c-s> set hidden!
 map <enter> shell
@@ -154,7 +289,6 @@ map I :rename; cmd-home # at the very beginning
 map i :rename # before extension
 map a :rename; cmd-right # after extension
 map B bulkrename
-map b $setbg $f
 
 map <c-e> down
 map <c-y> up
@@ -162,7 +296,27 @@ map V push :!nvim<space>
 
 map W $setsid -f $TERMINAL >/dev/null 2>&1
 
-map Y $printf "%s" "$fx" | xclip -selection clipboard
+map U $printf "%s" "$fx" | xclip -selection clipboard
+map u $printf "%s" "$fx" | sed 's/.*\///' | xclip -selection clipboard
+#map <f-12> $printf "%s" "$fx" | sed -E 's/^.+\[//' | sed -E 's/\]\..+//' | xclip -selection clipboard
+map . $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/www.youtube.com\/watch?v=/' | sed -E 's/\]\..+//' | xclip -selection clipboard
+map <gt> $printf "%s" "$fx" | sed -E 's/^.+\[/https:\/\/piped.video\/watch?v=/' | sed -E 's/\]\..+//' | xclip -selection clipboard
+map T $sxiv -t "$(pwd)" # opens thumbnail mode
+map <c-l> unselect
+map f
+map F
+
+map b encodetomp3
+map <a-b> encodetomp3 delete_after_encoding
+map <c-b> encodetomp3 delete_after_encoding
+map Z compressvideo
+
+
+
+map <f-3> movetokek
+map <f-4> movetokek
+map <f-11> movetomusic
+
 
 # Source Bookmarks
 source "~/.config/lf/shortcutrc"

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+THICCDIRECTORY=~/THICC/Videos/
+
+if [ ! -d "$THICCDIRECTORY" ]; then
+  echo "You haven't mounted the THICC drive!"
+  exit
+fi
+
+# will shutdown in 30 minutes from now
+# sudo shutdown +30 &
+
+# rsync everything
+rsync --delete-after -uvr ~/Music ~/THICC/
+rsync --delete-after -uvr ~/mm ~/THICC/

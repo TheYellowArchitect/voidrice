@@ -1,0 +1,3 @@
+#!/bin/dash
+
+xclip -o selection primary | sed -E 's/\?si\=[a-zA-Z0-9]{16}//' | grep yout | xargs mpv

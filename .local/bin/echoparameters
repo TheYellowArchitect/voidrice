@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# $# is the number of arguments passed to current script
+for ((i=0; i<=$#; i++)); do
+  echo "parameter $i --> ${!i}"
+done

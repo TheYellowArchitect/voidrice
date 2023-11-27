@@ -50,4 +50,4 @@ esac
 
 checkforecast || getforecast
 
-showweather
+#showweather

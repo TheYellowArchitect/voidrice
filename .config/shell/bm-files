@@ -4,8 +4,33 @@
 bf	${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-files	# This file, a list of bookmarked files
 bd	${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs		# A list of bookmarked directories similar to this file
 cfx	${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources	# Colors, themes and variables for X11
-cfb	~/.local/src/dwmblocks/config.h				# dwmblocks: the status bar for dwm
+cfdb	~/.local/src/dwmblocks/config.h				# dwmblocks: the status bar for dwm
+cfdw     ~/.local/src/dwm/config.h                               # dwm
 
+# Personal
+Ln	$HOME/mm/Linux-Guides/NOTES.txt
+Lt	$HOME/mm/Linux-Guides/tar.txt
+Lf	$HOME/mm/Linux-Guides/common-ffmpeg-commands.txt
+Bm	$MM_METASTASIS/Check_these!.txt
+Bc	$MM_METASTASIS/Core_GDD_that_needs_cleanup.txt
+Bg	$MM_METASTASIS/Game Design Document Wiki Format.txt
+Ya	$MM_YUGIOH/1SRPG/TXT/amain-nostalgia.txt
+Yo	$MM_YUGIOH/1SRPG/TXT/BEYOND_SEQUEL_Grand_Campaign_Online.txt
+Ys	$MM_YUGIOH/1SRPG/TXT/TRPG_The_Pyramid_of_the_Sun_God.txt
+Ma	$MM_GAME_DESIGNS/The_Mathemagician/The_Mathemagician_v9plus.txt
+K	$MM_GAME_DESIGNS/Kallipolis/GDD.txt
+Lg	$MM_GAME_DESIGNS/The_Labyrinth_of_Endless_Sin_-_Dungeon_Crawler_Multiplayer/GDD.txt
+Ll	$MM_GAME_DESIGNS/The_Labyrinth_of_Endless_Sin_-_Dungeon_Crawler_Multiplayer/Lore_books_to_spread_around-eg_origin_of_cancer_and_worms.txt
+Q	$MM_GAME_DESIGNS/Gamer_Quiz-Buzz_Free_Mod_Centric/GDD.txt
+Ba	$HOME/mm/ArchArchitectureProjects/BraveNewAlexandria/AncientGreekUtopia.txt
+Ea	$HOME/mm/Eselegia/AshenKeepersOfKnowledge/KnowledgeBook_AshenKeepersofKnowledge.txt
+Eg	$HOME/mm/Eselegia/Book2_ThyGoldBlood.txt
+Il	$HOME/mm/ArchArchitectureProjects/Illuminopolis/Illuminopolis.txt
+2084	$HOME/mm/ArchArchitectureProjects/2084_TheCityUponTheHill/ideal_utopia_2084.txt
+Li	$HOME/mm/ArchArchitectureProjects/YoutubeVids/ListOfMiscIdeas.txt
+Mi	$HOME/mm/TextFiles/misc.txt
+Mwh	$HOME/mm/TextFiles/whbooks.txt
+PP	$HOME/mm/TextFiles/PP.txt
 
 # These do not update automatically, but on the next new instance of a program:
 
@@ -18,6 +43,7 @@ cfn	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/config	# newsboat (RSS reader)
 cfu	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/urls		# RSS urls for newsboat
 cfmb	${XDG_CONFIG_HOME:-$HOME/.config}/ncmpcpp/bindings	# ncmpcpp (music player) keybinds file
 cfmc	${XDG_CONFIG_HOME:-$HOME/.config}/ncmpcpp/config	# ncmpcpp (music player) config
-cfl	${XDG_CONFIG_HOME:-$HOME/.config}/lf/lfrc		# lf (file browser) config
-cfL	${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope		# lf's scope/preview file
-cfX	${XDG_CONFIG_HOME:-$HOME/.config}/nsxiv/exec/key-handler	# nsxiv (image viewer) key/script handler
+clf	${XDG_CONFIG_HOME:-$HOME/.config}/lf/lfrc		# lf (file browser) config
+clF	${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope		# lf's scope/preview file
+cfX	${XDG_CONFIG_HOME:-$HOME/.config}/nsxiv/exec/key-handler	 # nsxiv (image viewer) key/script handler
+cfs	$HOME/local/bin/shortcuts

@@ -1,0 +1,11 @@
+account hello@theyellowarchitect.com
+host mail.theyellowarchitect.com
+port 465
+from hello@theyellowarchitect.com
+user hello@theyellowarchitect.com
+passwordeval "pass hello@theyellowarchitect.com"
+auth on
+tls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/solomos/.local/state/msmtp/msmtp.log
+tls_starttls off

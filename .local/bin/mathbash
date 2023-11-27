@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+declare -i targetNumber=120
+declare -i dividedNumber=1
+declare -i regeneratedNumber=1
+
+echo -n "Insert a number in order to calculate the 2 numbers which can create it by multiplication: "
+read -r userInput
+targetNumber=$userInput
+
+
+for ((i=1 ; i < targetNumber / 2 ; i++)); do
+	dividedNumber=$(( targetNumber / i ))
+	#echo $dividedNumber
+
+	regeneratedNumber=$(( dividedNumber * i))
+	#echo $regeneratedNumber
+
+	if (($regeneratedNumber == $targetNumber)); then
+		echo "$dividedNumber * $i"
+	fi
+
+done
